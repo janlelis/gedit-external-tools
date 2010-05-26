@@ -3,7 +3,7 @@
 # Name=[git] add/commit
 # Shortcut=<Control><Alt>a
 # Applicability=titled
-# Output=output-panel
+# Output=nothing
 # Input=nothing
 # Save-files=all
 
@@ -15,12 +15,17 @@
 # Input:  Nothing
 # Output: Nothing
 
-if [ ! -z `git rev-parse --git-dir` ]; then
-
-msg() {
-  zenity --entry --title="git commit" --text="message:" --width=500
+commit() {
+  dirty=`git status 2> /dev/null | grep 'nothing to commit (working directory clean)'`
+  if [ ! -z "$dirty" ]; then
+    zenity --warning --title='git commit' --text='nothing to commit (working directory clean)'
+  else
+    res=`git commit $1 -m "\`zenity --entry --title='git commit' --text='message:' --width=500\`"` && zenity --info --title='git commit $1' --text="$res"
+  fi
 }
 
+if [ ! -z `git rev-parse --git-dir` ]; then
+`git status 2> /dev/null | tail -n1 | grep "nothing to commit \(working directory clean\)"`
 sel=`echo "1
 add 
 file
@@ -64,26 +69,21 @@ case $sel in
   zenity --info --title='git add' --text="Added\n$dir"
   ;;
 4)
-  res=`git commit -m \'\`msg\`\'` &&
-  zenity --info --title='git commit' --text="$res"
+  commit
   ;;
 5)
-  res=`git commit $GEDIT_CURRENT_DOCUMENT_PATH -m \'\`msg\`\'` &&
-  zenity --info --title="git commit $GEDIT_CURRENT_DOCUMENT_PATH" --text="$res"
+  commit $GEDIT_CURRENT_DOCUMENT_PATH
   ;;
 6)
-  res=`git commit $GEDIT_CURRENT_DOCUMENT_DIR -m \'\`msg\`\'` &&
-  zenity --info --title="git commit $GEDIT_CURRENT_DOCUMENT_DIR" --text="$res"
+  commit $GEDIT_CURRENT_DOCUMENT_DIR
   ;;
 7)
   dir=`dirname \`git rev-parse --git-dir\``
   git add "$dir" &&
-  res=`git commit -m \'\`msg\`\'` &&
-  zenity --info --title="git add $dir && git commit" --text="$res"
+  commit
   ;;
 8)
-  res=`git commit -a -m \'\`msg\`\'` &&
-  zenity --info --title="git commit -a" --text="$res"
+  commit -a
   ;;
 9)
   params=`zenity --entry --title='git push' --text='params (cancel for none)' --entry-text='origin master'`
