@@ -14,13 +14,15 @@
 # Save:   All documents
 # Input:  Nothing
 # Output: Nothing
+#
+# by Jan Lelis (mail@janlelis.de), edited by (you?)
 
 commit() {
   dirty=`git status 2> /dev/null | grep 'nothing to commit (working directory clean)'`
   if [ ! -z "$dirty" ]; then
     zenity --warning --title='git commit' --text='nothing to commit (working directory clean)'
   else
-    res=`git commit $1 -m "\`zenity --entry --title='git commit' --text='message:' --width=500\`"` && zenity --info --title='git commit $1' --text="$res"
+    res=`git commit $1 -m "\`zenity --entry --title='git commit' --text='message:' --width=500\`"` && zenity --info --title="git commit $1" --text="$res"
   fi
 }
 
@@ -93,5 +95,5 @@ case $sel in
 esac
 
 else
-  zenity --error --title='git' --text='Sorry, no git repository'
+  zenity --error --title='git' --text='Sorry, not a git repository'
 fi

@@ -14,6 +14,8 @@
 # Save:   Current document
 # Input:  Nothing
 # Output: Nothing
+#
+# by Jan Lelis (mail@janlelis.de), edited by (you?)
 
 if [ ! -z `git rev-parse --git-dir` ]; then
   diff=`git diff $GEDIT_CURRENT_DOCUMENT_PATH` &&
@@ -23,5 +25,5 @@ if [ ! -z `git rev-parse --git-dir` ]; then
     echo "$diff" | zenity --text-info --title="git diff $GEDIT_CURRENT_DOCUMENT_PATH" --width=1000 --height=700 
   fi
 else
-  zenity --error --title='git diff' --text='Sorry, no git repository'
+  zenity --error --title='git diff' --text='Sorry, not a git repository'
 fi
