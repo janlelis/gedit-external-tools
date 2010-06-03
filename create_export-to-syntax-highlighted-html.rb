@@ -14,6 +14,8 @@
 # Save:   Nothing
 # Input:  Current document
 # Output: Nothing
+#
+# by Jan Lelis (mail@janlelis.de), edited by (you?)
 
 require 'rubygems'
 require 'coderay'

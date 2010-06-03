@@ -14,10 +14,12 @@
 # Save:   All documents
 # Input:  Nothing
 # Output: Nothing
+#
+# by Jan Lelis (mail@janlelis.de), edited by (you?)
 
 save_at = `zenity --file-selection --save --title='Please select the location where the archive should be stored' --filename="$GEDIT_CURRENT_DOCUMENT_DIR/archive.tgz"`.chomp
 
-if save_at
+if save_at && !save_at.empty?
   cmd = 'tar czf ' + save_at + ENV['GEDIT_DOCUMENTS_PATH'].split.map{ |doc|
   " -C #{File.dirname doc} #{File.basename doc}"
   }.join
