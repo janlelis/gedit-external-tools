@@ -22,11 +22,12 @@ TEXT="Compare $GEDIT_CURRENT_DOCUMENT_NAME with:"
 BROWSE=" browse..."
 FILE=
 while [ -z "$FILE" ]; do
-        FILE=`zenity --list --title="$TITLE" --text="$TEXT" --width=640 --height=320 --column=Documents $GEDIT_DOCUMENTS_PATH "$BROWSE"`
-        if [ "$FILE" == "$BROWSE" ]; then
-                FILE=`zenity --file-selection --title="$TITLE" --filename="$GEDIT_CURRENT_DOCUMENT_DIR/"`
-        elif [ -z "$FILE" ]; then
-                exit 
-        fi
+  FILE=`zenity --list --title="$TITLE" --text="$TEXT" --width=640 --height=320 --column=Documents $GEDIT_DOCUMENTS_PATH "$BROWSE"`
+  if [ "$FILE" = "$BROWSE" ]; then
+    FILE=`zenity --file-selection --title="$TITLE" --filename="$GEDIT_CURRENT_DOCUMENT_DIR/"`
+  elif [ -z "$FILE" ]; then
+    exit 
+  fi
 done
+
 meld "$GEDIT_CURRENT_DOCUMENT_DIR/$GEDIT_CURRENT_DOCUMENT_NAME" "$FILE" &
