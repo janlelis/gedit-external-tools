@@ -1,0 +1,10 @@
+h3. This is a collection of snippets for gedit's external tools plugin.
+
+To use them, just check if the "External Tools" plugin is activated and copy & paste the tools you want into the _Tools -> Manage External Tools..._ menu.
+
+Alternatively, you can "download":http://github.com/janlelis/gedit-external-tools/tarball/master or clone all files and copy them to @~/.gnome2/gedit/tools@. They are automatically recognised by the plugin. Make sure to adjust the shortcuts.
+
+Feel free to add useful and handy tool snippets ;)
+
+For additional information (blog post), see "[rbjl.net]":http://rbjl.net/23-gedit-external-tools-ruby-helpers-git-integration-and-more
+
