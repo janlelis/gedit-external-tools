@@ -14,6 +14,8 @@
 # Save:   Nothing
 # Input:  Nothing
 # Output: Create new document
+#
+# by Jan Lelis (mail@janlelis.de), edited by (you?)
 
 url=`zenity --entry --title='Download' --text='URL:'`
 
