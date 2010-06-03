@@ -14,6 +14,8 @@
 # Save:   Nothing
 # Input:  Current selection
 # Output: Replace current selection
+#
+# by Jan Lelis (mail@janlelis.de), edited by (you?)
 
 require 'digest'
 
@@ -24,7 +26,7 @@ SHA2\n512\n
 SHA1\n(160)\n
 MD5\n(128)\n"
 
-params = `echo "#{list}" | zenity --list --title='create cryptographic hash' --text='What kind of hash do you want to create? (editable, but press enter after edit!)' --height=210 --column="algorithm" --column="length" --column='salt' --editable --print-column='ALL'`.chop
+params = `echo "#{list}" | zenity --list --title='create cryptographic hash' --text='What kind of hash do you want to create? (editable, but press enter after edit!)' --height=250 --column="algorithm" --column="length" --column='salt' --editable --print-column='ALL'`.chop
 
 gets
 
