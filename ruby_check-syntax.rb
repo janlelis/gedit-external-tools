@@ -15,6 +15,8 @@
 # Save:   Nothing
 # Input:  Current document
 # Output: Nothing
+#
+# by Jan Lelis (mail@janlelis.de), edited by (you?)
 
 if "Syntax OK" == syntax = `ruby -c 2>&1`.chomp
   type = 'info'

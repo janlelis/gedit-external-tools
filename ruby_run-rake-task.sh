@@ -14,6 +14,8 @@
 # Save:   Nothing
 # Input:  Nothing
 # Output: Display in bottom pane
+#
+# by GNOME wiki <http://live.gnome.org/Gedit/ExternalToolsPluginCommands#Rake>, edited by Jan Lelis (mail@janlelis.de)
 
 rake=`rake -sT`
 

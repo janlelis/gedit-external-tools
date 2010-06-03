@@ -15,6 +15,8 @@
 # Save:   Current document
 # Input:  Nothing
 # Output: Nothing
+#
+# by Jan Lelis (mail@janlelis.de), edited by (you?)
 
 if "Syntax OK" == syntax = `ruby -c "$GEDIT_CURRENT_DOCUMENT_PATH" 2>&1`.chomp
   `gnome-terminal --command="irb -r$GEDIT_CURRENT_DOCUMENT_NAME" --working-directory="$GEDIT_CURRENT_DOCUMENT_DIR" &`

@@ -5,7 +5,7 @@
 # Languages=ruby,rubyonrails
 # Applicability=all
 # Output=output-panel
-# Input=nothing
+# Input=document
 # Save-files=nothing
 
 
@@ -14,5 +14,6 @@
 # Save:   Nothing
 # Input:  Current document
 # Output: Display in bottom pane
-
+#
+# by GNOME wiki <http://live.gnome.org/Gedit/ExternalToolsPluginCommands#Rake>
 ruby
